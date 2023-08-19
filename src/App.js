@@ -1,7 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import Input from './components/Input';
 
 function App() {
   const ref = useRef();
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const enable = username && password;
 
   useEffect(() => {
     let images = ref.current.querySelectorAll('img'),
@@ -56,8 +62,8 @@ function App() {
           />
         </div>
       </div>
-      <div className="w-[350px] bg-white border px-[50px] pt-6 pb-2">
-        <a href="" className="flex items-center justify-center">
+      <div className="w-[350px] bg-white border px-[40px] pb-2 pt-10">
+        <a href="" className="flex items-center justify-center  mb-8">
           <img
             className="h-[51px]"
             src="https://www.instagram.com/static/images/web/logged_out_wordmark-2x.png/d2529dbef8ed.png"
@@ -65,15 +71,32 @@ function App() {
           />
         </a>
         <form action="">
-          <label className="block relative">
-            <input
-              type="text"
-              className="bg-zinc-50 border w-full rounded-sm h-[38px] focus:border-gray-400 pointer-events-none outline-none px-2"
-            />
-            <small className="absolute top-1/2 left-0 cursor-text  -translate-y-1/2 left-[9px] text-xs text-gray-500">
-              Phone number, username or email
-            </small>
-          </label>
+          <Input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            label="Phone number, username or email"
+          />
+          <Input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            label="Password"
+          />
+          <button
+            type="submit"
+            disabled={!enable}
+            className="h-[30px] mt-1 rounded bg-brand font-medium text-white text-sm disabled:opacity-50"
+          >
+            Log In
+          </button>
+          <div className="flex items-center my-2.5 mb-3.5">
+            <div className="h-px bg-gray-300 flex-1" />
+            <span className="px-4 text-[13px] text-gray-500 font-semibold">
+              OR
+            </span>
+            <div className="h-px bg-gray-300 flex-1" />
+          </div>
         </form>
       </div>
     </div>
