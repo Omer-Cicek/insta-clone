@@ -1,9 +1,13 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
+import { toast } from 'react-hot-toast';
+import { userHandle } from 'utils';
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: 'AIzaSyAz5EdZbjt8EfRCvMdApr7qtJZtLdHpUU8',
   authDomain: 'instagram-clone-1233c.firebaseapp.com',
@@ -15,3 +19,34 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+const auth = getAuth();
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    userHandle(user || false);
+  } else {
+    userHandle(false);
+  }
+});
+
+export const login = async (email, password) => {
+  try {
+    const response = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    ).then((res) => console.log(res));
+  } catch (err) {
+    toast.error(err.code);
+  }
+};
+
+// signInWithEmailAndPassword(auth, email, password)
+//   .then((userCredential) => {
+//     const user = userCredential.user;
+//   })
+//   .catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//   });
