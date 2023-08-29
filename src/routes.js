@@ -1,18 +1,23 @@
-import PrivateRoute from 'components/PrivateRoute';
-import Home from 'pages/Home';
-import Login from 'pages/Login';
-import AuthLayout from 'pages/auth';
+import PrivateRoute from "components/PrivateRoute";
+import Home from "pages/Home";
+import Login from "pages/Login";
+import AuthLayout from "pages/auth";
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     element: <Home />,
     auth: true,
   },
   {
-    path: '/auth',
+    path: "/auth",
     element: <AuthLayout />,
-    children: [{ path: 'login', element: <Login /> }],
+    children: [
+      {
+        path: "login",
+        element: <Login />,
+      },
+    ],
   },
 ];
 
@@ -24,6 +29,7 @@ const authCheck = (routes) =>
     if (route?.children) {
       route.children = authCheck(route.children);
     }
+    return route;
   });
 
-export default routes;
+export default authCheck(routes);
