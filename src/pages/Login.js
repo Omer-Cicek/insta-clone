@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react";
-import Input from "components/Input";
-import { AiFillFacebook } from "react-icons/ai";
-import { useNavigate, useLocation } from "react-router-dom";
-import { login } from "firebase.js";
-import { Formik, Form } from "formik";
-import { LoginSchema } from "validation";
+import { useEffect, useRef, useState } from 'react';
+import Input from 'components/Input';
+import { AiFillFacebook } from 'react-icons/ai';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { login } from 'firebase.js';
+import { Formik, Form } from 'formik';
+import { LoginSchema } from 'validation';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -12,12 +12,12 @@ export default function Login() {
   const ref = useRef();
 
   useEffect(() => {
-    let images = ref.current.querySelectorAll("img"),
+    let images = ref.current.querySelectorAll('img'),
       total = images.length,
       current = 0;
     const imageSlider = () => {
-      images[(current > 0 ? current : total) - 1].classList.add("opacity-0");
-      images[current].classList.remove("opacity-0");
+      images[(current > 0 ? current : total) - 1].classList.add('opacity-0');
+      images[current].classList.remove('opacity-0');
       current = current === total - 1 ? 0 : current + 1;
     };
     imageSlider();
@@ -28,15 +28,15 @@ export default function Login() {
   }, [ref]);
 
   const images = [
-    "https://www.instagram.com/static/images/homepage/screenshots/screenshot1-2x.png/cfd999368de3.png",
-    "https://www.instagram.com/static/images/homepage/screenshots/screenshot2-2x.png/80b8aebdea57.png",
-    "https://www.instagram.com/static/images/homepage/screenshots/screenshot3-2x.png/fe2540684ab2.png",
-    "https://www.instagram.com/static/images/homepage/screenshots/screenshot4-2x.png/8e9224a71939.png",
+    'https://www.instagram.com/static/images/homepage/screenshots/screenshot1-2x.png/cfd999368de3.png',
+    'https://www.instagram.com/static/images/homepage/screenshots/screenshot2-2x.png/80b8aebdea57.png',
+    'https://www.instagram.com/static/images/homepage/screenshots/screenshot3-2x.png/fe2540684ab2.png',
+    'https://www.instagram.com/static/images/homepage/screenshots/screenshot4-2x.png/8e9224a71939.png',
   ];
 
   const handleSubmit = async (values, actions) => {
     await login(values.username, values.password);
-    navigate(location.state?.return_url || "/", {
+    navigate(location.state?.return_url || '/', {
       replace: true,
     });
   };
@@ -71,8 +71,8 @@ export default function Login() {
           <Formik
             validationSchema={LoginSchema}
             initialValues={{
-              username: "",
-              password: "",
+              username: '',
+              password: '',
             }}
             onSubmit={handleSubmit}
           >
@@ -116,7 +116,7 @@ export default function Login() {
         </div>
 
         <div className="bg-white border p-4 text-sm text-center">
-          Don't have an account?{" "}
+          Don't have an account?{' '}
           <a href="#" className="font-semibold text-brand">
             Sign up
           </a>

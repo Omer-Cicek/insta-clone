@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
-import Search from "./Search";
-import { logout } from "firebase.js";
+import { Link } from 'react-router-dom';
+import Search from 'components/Search';
+import { logout } from 'firebase.js';
 
 export default function Header() {
   return (
     <header className="bg-white border-b border-gray-300">
-      <div className="flex items-center justify-between h-[60px] w-[90%] container mx-auto">
+      <div className="flex items-center justify-between h-[60px] container mx-auto">
         <Link to="/">
           <img
             className="h-[29px]"
@@ -14,6 +14,7 @@ export default function Header() {
         </Link>
 
         <Search />
+
         <nav>
           <button onClick={logout}>Logout</button>
         </nav>
