@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 import {
   getAuth,
   onAuthStateChanged,
@@ -7,18 +7,18 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
-} from "firebase/auth";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
-import { toast } from "react-hot-toast";
-import { userHandle } from "utils";
+} from 'firebase/auth';
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import { toast } from 'react-hot-toast';
+import { userHandle } from 'utils';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAz5EdZbjt8EfRCvMdApr7qtJZtLdHpUU8",
-  authDomain: "instagram-clone-1233c.firebaseapp.com",
-  projectId: "instagram-clone-1233c",
-  storageBucket: "instagram-clone-1233c.appspot.com",
-  messagingSenderId: "350824176252",
-  appId: "1:350824176252:web:1519a411c0cdcf043d07f9",
+  apiKey: 'AIzaSyAz5EdZbjt8EfRCvMdApr7qtJZtLdHpUU8',
+  authDomain: 'instagram-clone-1233c.firebaseapp.com',
+  projectId: 'instagram-clone-1233c',
+  storageBucket: 'instagram-clone-1233c.appspot.com',
+  messagingSenderId: '350824176252',
+  appId: '1:350824176252:web:1519a411c0cdcf043d07f9',
 };
 
 // Initialize Firebase
@@ -52,16 +52,20 @@ export const register = async ({ email, password, full_name, username }) => {
       password
     );
 
-    await setDoc(doc(db, "usernames", username), {
+    await setDoc(doc(db, 'usernames', username), {
       user_id: response.user.uid,
     });
 
-    await setDoc(doc(db, "users", response.user.uid), {
+    await setDoc(doc(db, 'users', response.user.uid), {
       full_name,
       username,
       followers: [],
       following: [],
       notifications: [],
+      website: '',
+      bio: '',
+      phoneNumber: '',
+      gender: '',
     });
     await updateProfile(auth.currentUser, {
       displayName: full_name,

@@ -1,4 +1,4 @@
-export default function Seperator({ label = "OR" }) {
+export default function Separator({ label = 'OR' }) {
   return (
     <div className="flex items-center my-2.5 mb-3.5">
       <div className="h-px bg-gray-300 flex-1" />
