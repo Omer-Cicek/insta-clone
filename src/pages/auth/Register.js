@@ -1,11 +1,11 @@
-import Input from "components/Input";
-import { AiFillFacebook } from "react-icons/ai";
-import { useNavigate, useLocation, Link } from "react-router-dom";
-import { register } from "firebase.js";
-import { Formik, Form } from "formik";
-import { RegisterSchema } from "validation";
-import Button from "components/Button";
-import Seperator from "components/Seperator";
+import Input from 'components/Input';
+import { AiFillFacebook } from 'react-icons/ai';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { register } from 'firebase.js';
+import { Formik, Form } from 'formik';
+import { RegisterSchema } from 'validation';
+import Button from 'components/Button';
+import Seperator from 'components/Separator';
 
 export default function Register() {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ export default function Register() {
   const handleSubmit = async (values, actions) => {
     const response = await register(values);
     if (response) {
-      navigate(location.state?.return_url || "/", {
+      navigate(location.state?.return_url || '/', {
         replace: true,
       });
     }
@@ -42,10 +42,10 @@ export default function Register() {
         <Formik
           validationSchema={RegisterSchema}
           initialValues={{
-            email: "",
-            full_name: "",
-            username: "",
-            password: "",
+            email: '',
+            full_name: '',
+            username: '',
+            password: '',
           }}
           onSubmit={handleSubmit}
         >
@@ -61,9 +61,9 @@ export default function Register() {
                 <a className="font-semibold">Learn More </a>
                 <br />
                 <br />
-                By signing up, you agree to our{" "}
-                <a className="font-semibold">Terms </a>,{" "}
-                <a className="font-semibold">Data Policy </a> and{" "}
+                By signing up, you agree to our{' '}
+                <a className="font-semibold">Terms </a>,{' '}
+                <a className="font-semibold">Data Policy </a> and{' '}
                 <a className="font-semibold">Cookies Policy</a>
               </p>
               <Button
@@ -78,8 +78,8 @@ export default function Register() {
       </div>
 
       <div className="bg-white border p-4 text-sm text-center">
-        Have an account?{" "}
-        <Link to={"/auth/login"} className="font-semibold text-brand">
+        Have an account?{' '}
+        <Link to={'/auth/login'} className="font-semibold text-brand">
           Log In
         </Link>
       </div>

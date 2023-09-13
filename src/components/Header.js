@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom";
-import Search from "components/Search";
-import { logout } from "firebase.js";
+import { Link, NavLink } from 'react-router-dom';
+import Search from 'components/Search';
+import { logout } from 'firebase.js';
+import Icon from './Icon';
+import { useSelector } from 'react-redux';
 
 export default function Header() {
+  const user = useSelector((state) => state.auth.user);
   return (
     <header className="bg-white  border-b border-gray-300">
       <div className="flex items-center justify-between h-[60px] container mx-auto w-[90%]">
@@ -14,9 +17,29 @@ export default function Header() {
         </Link>
 
         <Search />
-
-        <nav>
-          <button onClick={logout}>Logout</button>
+        <nav className="flex items-center gap-x-6">
+          <NavLink to="/">
+            <Icon name="home" size={24} />
+          </NavLink>
+          <NavLink to="/">
+            <Icon name="direct" size={24} />
+          </NavLink>
+          <NavLink to="/">
+            <Icon name="new" size={24} />
+          </NavLink>
+          <NavLink to="/">
+            <Icon name="explore" size={24} />
+          </NavLink>
+          <NavLink to="/">
+            <Icon name="heart" size={24} />
+          </NavLink>
+          <NavLink to={`/${user.username}`}>
+            <img
+              src="/no-avatar.jpeg"
+              alt=""
+              className="w-6 h-6 rounded-full"
+            />
+          </NavLink>
         </nav>
       </div>
     </header>

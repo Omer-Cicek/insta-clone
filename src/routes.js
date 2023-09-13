@@ -1,25 +1,31 @@
-import PrivateRoute from "components/PrivateRoute";
-import Home from "pages/Home";
-import Login from "pages/auth/Login";
-import Register from "pages/auth/Register";
-import AuthLayout from "pages/auth";
+import PrivateRoute from 'components/PrivateRoute';
+import Home from 'pages/Home';
+import Profile from 'pages/profile';
+import MainLayout from 'pages/Layout';
+import Login from 'pages/auth/Login';
+import Register from 'pages/auth/Register';
+import AuthLayout from 'pages/auth';
 
 const routes = [
   {
-    path: "/",
-    element: <Home />,
+    path: '/',
+    element: <MainLayout />,
     auth: true,
+    children: [
+      { index: true, element: <Home /> },
+      { path: ':username', element: <Profile /> },
+    ],
   },
   {
-    path: "/auth",
+    path: '/auth',
     element: <AuthLayout />,
     children: [
       {
-        path: "login",
+        path: 'login',
         element: <Login />,
       },
       {
-        path: "register",
+        path: 'register',
         element: <Register />,
       },
     ],
