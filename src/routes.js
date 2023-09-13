@@ -1,10 +1,12 @@
 import PrivateRoute from 'components/PrivateRoute';
 import Home from 'pages/Home';
-import Profile from 'pages/profile';
+import ProfileLayout from 'pages/profile';
+import ProfilePosts from 'pages/profile/posts';
 import MainLayout from 'pages/Layout';
 import Login from 'pages/auth/Login';
 import Register from 'pages/auth/Register';
 import AuthLayout from 'pages/auth';
+import ProfileTagged from 'pages/profile/tagged';
 
 const routes = [
   {
@@ -12,8 +14,28 @@ const routes = [
     element: <MainLayout />,
     auth: true,
     children: [
-      { index: true, element: <Home /> },
-      { path: ':username', element: <Profile /> },
+      {
+        index: true,
+        element: <Home />,
+      },
+      //   {
+      //     path: 'logout',
+      //     element: <Logout />,
+      //   },
+      {
+        path: ':username',
+        element: <ProfileLayout />,
+        children: [
+          {
+            index: true,
+            element: <ProfilePosts />,
+          },
+          {
+            path: 'tagged',
+            element: <ProfileTagged />,
+          },
+        ],
+      },
     ],
   },
   {
