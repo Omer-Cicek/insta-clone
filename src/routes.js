@@ -7,6 +7,7 @@ import Login from 'pages/auth/Login';
 import Register from 'pages/auth/Register';
 import AuthLayout from 'pages/auth';
 import ProfileTagged from 'pages/profile/tagged';
+import Logout from 'pages/Logout';
 
 const routes = [
   {
@@ -18,10 +19,10 @@ const routes = [
         index: true,
         element: <Home />,
       },
-      //   {
-      //     path: 'logout',
-      //     element: <Logout />,
-      //   },
+      {
+        path: 'logout',
+        element: <Logout />,
+      },
       {
         path: ':username',
         element: <ProfileLayout />,

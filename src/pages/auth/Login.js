@@ -15,21 +15,21 @@ export default function Login() {
   const location = useLocation();
   const ref = useRef();
 
-  //   useEffect(() => {
-  //     let images = ref.current.querySelectorAll('img'),
-  //       total = images.length,
-  //       current = 0;
-  //     const imageSlider = () => {
-  //       images[(current > 0 ? current : total) - 1].classList.add('opacity-0');
-  //       images[current].classList.remove('opacity-0');
-  //       current = current === total - 1 ? 0 : current + 1;
-  //     };
-  //     imageSlider();
-  //     let interval = setInterval(imageSlider, 3000);
-  //     return () => {
-  //       clearInterval(interval);
-  //     };
-  //   }, [ref]);
+  useEffect(() => {
+    let images = ref.current.querySelectorAll('img'),
+      total = images.length,
+      current = 0;
+    const imageSlider = () => {
+      images[(current > 0 ? current : total) - 1].classList.add('opacity-0');
+      images[current].classList.remove('opacity-0');
+      current = current === total - 1 ? 0 : current + 1;
+    };
+    imageSlider();
+    let interval = setInterval(imageSlider, 3000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [ref]);
 
   const images = [
     'https://www.instagram.com/static/images/homepage/screenshots/screenshot1-2x.png/cfd999368de3.png',

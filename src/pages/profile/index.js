@@ -4,32 +4,42 @@ import { getUserInfo } from 'firebase.js';
 import Header from 'pages/profile/components/Header';
 import Icon from 'components/Icon';
 import classNames from 'classnames';
+import ProfileNotFound from './not-found';
+import { Helmet } from 'react-helmet';
 
 const ProfileLayout = () => {
   const { username } = useParams();
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     getUserInfo(username)
       .then((user) => {
-        console.log(user);
+        console.log(user, 'userrr');
         setUser(user);
       })
       .catch((err) => {
-        navigate('/', { replace: true });
+        setUser(false);
       });
   }, []);
+
+  if (user === false) {
+    return <ProfileNotFound />;
+  }
+
+  if (user === null) {
+    return <div>Loading...</div>;
+  }
 
   return (
     user && (
       <div>
-        {/* <Helmet> */}
-        <title>
-          {user.fullName} (@{user.username}) • Instagram photos and videos
-        </title>
-        {/* </Helmet> */}
+        <Helmet>
+          <title>
+            {user.full_name} (@{user.username}) • Instagram photos and videos
+          </title>
+        </Helmet>
         <Header user={user} />
         <nav className="border-t flex gap-x-16 justify-center items-center">
           <NavLink
