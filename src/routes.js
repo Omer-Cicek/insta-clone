@@ -8,6 +8,8 @@ import Register from 'pages/auth/Register';
 import AuthLayout from 'pages/auth';
 import ProfileTagged from 'pages/profile/tagged';
 import Logout from 'pages/Logout';
+import InboxLayout from 'pages/inbox';
+import Inbox from 'pages/inbox/Inbox';
 
 const routes = [
   {
@@ -35,6 +37,20 @@ const routes = [
             path: 'tagged',
             element: <ProfileTagged />,
           },
+        ],
+      },
+      {
+        path: 'inbox',
+        element: <InboxLayout />,
+        children: [
+          {
+            index: true,
+            element: <Inbox />,
+          },
+          // {
+          //     path: ':conversationId',
+          //     element: <Chat />
+          // }
         ],
       },
     ],
