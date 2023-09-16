@@ -1,19 +1,20 @@
-import PrivateRoute from 'components/PrivateRoute';
-import Home from 'pages/Home';
-import ProfileLayout from 'pages/profile';
-import ProfilePosts from 'pages/profile/posts';
-import MainLayout from 'pages/Layout';
-import Login from 'pages/auth/Login';
-import Register from 'pages/auth/Register';
-import AuthLayout from 'pages/auth';
-import ProfileTagged from 'pages/profile/tagged';
-import Logout from 'pages/Logout';
-import InboxLayout from 'pages/inbox';
-import Inbox from 'pages/inbox/Inbox';
+import PrivateRoute from "components/PrivateRoute";
+import Home from "pages/Home";
+import ProfileLayout from "pages/profile";
+import ProfilePosts from "pages/profile/posts";
+import MainLayout from "pages/Layout";
+import Login from "pages/auth/Login";
+import Register from "pages/auth/Register";
+import AuthLayout from "pages/auth";
+import ProfileTagged from "pages/profile/tagged";
+import Logout from "pages/Logout";
+import InboxLayout from "pages/inbox";
+import Inbox from "pages/inbox/Inbox";
+import Chat from "pages/inbox/chat";
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     element: <MainLayout />,
     auth: true,
     children: [
@@ -22,11 +23,11 @@ const routes = [
         element: <Home />,
       },
       {
-        path: 'logout',
+        path: "logout",
         element: <Logout />,
       },
       {
-        path: ':username',
+        path: ":username",
         element: <ProfileLayout />,
         children: [
           {
@@ -34,37 +35,37 @@ const routes = [
             element: <ProfilePosts />,
           },
           {
-            path: 'tagged',
+            path: "tagged",
             element: <ProfileTagged />,
           },
         ],
       },
       {
-        path: 'inbox',
+        path: "inbox",
         element: <InboxLayout />,
         children: [
           {
             index: true,
             element: <Inbox />,
           },
-          // {
-          //     path: ':conversationId',
-          //     element: <Chat />
-          // }
+          {
+            path: ":conversationId",
+            element: <Chat />,
+          },
         ],
       },
     ],
   },
   {
-    path: '/auth',
+    path: "/auth",
     element: <AuthLayout />,
     children: [
       {
-        path: 'login',
+        path: "login",
         element: <Login />,
       },
       {
-        path: 'register',
+        path: "register",
         element: <Register />,
       },
     ],
