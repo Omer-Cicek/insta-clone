@@ -9,7 +9,7 @@ const Reply = () => {
           <Icon name="emoji" />
         </button>
         <input
-          className="flex-1 h-[40px] text-sm outline-none"
+          className="flex-1 h-[40px] text-sm outline-none px-[9px] placeholder:text-gray-600"
           placeholder="Message..."
         />
         <button className="w-[40px] h-[42px] flex items-center justify-center">

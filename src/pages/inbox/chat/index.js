@@ -8,6 +8,13 @@ const Chat = () => {
     avatar:
       "https://pbs.twimg.com/profile_images/1064886121870561280/1Z8pZjhG_400x400.jpg",
   };
+
+  const messsages = [
+    {
+      fromMe: true,
+      message: "Testtt",   
+    },
+  ];
   return (
     <div className="flex-1">
       <Header user={user} />
