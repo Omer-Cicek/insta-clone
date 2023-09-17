@@ -1,6 +1,6 @@
-import classNames from "classnames";
-import React from "react";
-import { NavLink, useParams } from "react-router-dom";
+import classNames from 'classnames';
+import React from 'react';
+import { NavLink, useParams } from 'react-router-dom';
 
 const ChatList = () => {
   const { conversationId } = useParams();
@@ -10,29 +10,29 @@ const ChatList = () => {
       id: 1,
       user: {
         avatar:
-          "https://pbs.twimg.com/profile_images/1526647892726915073/tN9rYw3V_400x400.jpg",
-        name: "Tayfun Erbilen",
+          'https://pbs.twimg.com/profile_images/1526647892726915073/tN9rYw3V_400x400.jpg',
+        name: 'Tayfun Erbilen',
       },
-      lastMessage: "Selam tayfun!",
+      lastMessage: 'Selam tayfun!',
     },
     {
       id: 2,
       user: {
         avatar:
-          "https://pbs.twimg.com/profile_images/1064886121870561280/1Z8pZjhG_400x400.jpg",
-        name: "Gökhan Kandemir",
+          'https://pbs.twimg.com/profile_images/1064886121870561280/1Z8pZjhG_400x400.jpg',
+        name: 'Gökhan Kandemir',
       },
       unread: true,
-      lastMessage: "yeni video attım, baktın mı?",
+      lastMessage: 'yeni video attım, baktın mı?',
     },
     {
       id: 3,
       user: {
         avatar:
-          "https://pbs.twimg.com/profile_images/1526647892726915073/tN9rYw3V_400x400.jpg",
-        name: "Tayfun Erbilen",
+          'https://pbs.twimg.com/profile_images/1526647892726915073/tN9rYw3V_400x400.jpg',
+        name: 'Tayfun Erbilen',
       },
-      lastMessage: "Selam tayfun!",
+      lastMessage: 'Selam tayfun!',
     },
   ];
   return (
@@ -45,9 +45,9 @@ const ChatList = () => {
         return (
           <NavLink
             className={classNames({
-              "h-[72px] flex items-center gap-x-4 hover:bg-zinc-50": true,
-              "font-semibold": chat?.unread,
-              "!bg-[#efefef]": +conversationId === chat.id,
+              'h-[72px] flex items-center gap-x-4 hover:bg-zinc-50': true,
+              'font-semibold': chat?.unread,
+              '!bg-[#efefef]': +conversationId === chat.id,
             })}
             key={chat.id}
             to={`/inbox/${chat.id}`}
@@ -59,7 +59,7 @@ const ChatList = () => {
             />
             <div>
               <h6 className="text-sm">{chat.user.name}</h6>
-              <p className={`text-sm ${!chat?.unread && "text-[#8e8e8e]"}`}>
+              <p className={`text-sm ${!chat?.unread && 'text-[#8e8e8e]'}`}>
                 {chat.lastMessage}
               </p>
             </div>

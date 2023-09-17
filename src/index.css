@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  body,
   html,
+  body,
   #root {
     @apply h-full bg-zinc-50;
   }
@@ -17,5 +17,11 @@
   }
   #root .container {
     @apply flex-1;
+  }
+}
+
+@layer components {
+  .messages-box > div {
+    @apply flex flex-col gap-y-2;
   }
 }
